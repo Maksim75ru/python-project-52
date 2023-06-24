@@ -9,8 +9,11 @@ package-install:
 lint:
 	poetry run flake8 task_manager
 
+start:
+	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi:application
+
 dev:
-	poetry run python manage.py runserver
+	poetry run python3 manage.py runserver
 
 migrate:
 	poetry run python manage.py makemigrations

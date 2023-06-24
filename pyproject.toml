@@ -16,6 +16,7 @@ packages = [{include = "task_manager"}]
 python = "^3.10"
 django = "^4.2.2"
 python-dotenv = "^1.0.0"
+gunicorn = "^20.1.0"
 
 
 [build-system]

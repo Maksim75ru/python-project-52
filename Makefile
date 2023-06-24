@@ -1,4 +1,4 @@
-PORT ?= 8000
+PORT ?= 8080
 
 install:
 	poetry install
@@ -16,11 +16,11 @@ dev:
 	poetry run python3 manage.py runserver
 
 migrate:
-	poetry run python manage.py makemigrations
-	poetry run python manage.py migrate
+	poetry run python3 manage.py makemigrations
+	poetry run python3 manage.py migrate
 
 test:
-	poetry run python manage.py test
+	poetry run python3 manage.py test
 
 test-coverage:
 	poetry run coverage run --source='task_manager' manage.py test task_manager

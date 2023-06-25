@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="">{% translate "Users" %}</a>
+                <a class="nav-link" href="{% url 'users_list' %}">{% translate "Users" %}</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -20,10 +20,10 @@
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="">{% translate "Log In" %}</a>
+                    <a class="nav-link" href="{% url 'login' %}">{% translate "Log In" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">{% translate "Sign Up" %}</a>
+                    <a class="nav-link" href="{% url 'users_create' %}">{% translate "Sign Up" %}</a>
                 </li>
             {% endif %}
         </ul>

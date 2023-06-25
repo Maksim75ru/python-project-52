@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <h1 class="my-4">{% trans 'Create user' %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% block button %}
+            <button class="btn btn-primary" type="submit">{% trans "Register" %}</button>
+        {% endblock button %}
+    </form>
+{% endblock %}

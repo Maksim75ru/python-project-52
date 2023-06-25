@@ -19,8 +19,6 @@ flake8==6.0.0
 Flask==2.2.3
 Flask-WTF==1.1.1
 gunicorn==20.1.0
-hexlet-code @ file:///Users/maksim/Desktop/Hexlet/python-project-52/dist/hexlet_code-0.1.0-py3-none-any.whl#sha256=622a932db780bb9e7a4776af3231da521085cde2e615d8a7215163b64f1f9faa
-hexlet-flask-example @ file:///Users/maksim/Desktop/hexlet-flask-example/dist/hexlet_flask_example-0.1.0-py3-none-any.whl
 hexlet-immutable-fs-trees==0.1.8
 idna==3.4
 iniconfig==2.0.0

@@ -8,7 +8,7 @@ install:
 build:
 	poetry build
 
-start:
+dev:
 	poetry run python3 manage.py runserver
 
 shell:

@@ -1,6 +1,6 @@
 PORT ?= 8000
 start:
-	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) python-project-52.task_manager.wsgi:application
+	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) wsgi:application
 
 install:
 	poetry install

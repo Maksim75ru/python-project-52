@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% trans 'Login' %}</h1>
+
+        <form method="post" action=".">
+            {% csrf_token %}
+            {%  for field in form %}
+                {% bootstrap_field field %}
+            {% endfor %}
+            {% block button %}
+                <button class="btn btn-primary" type="submit">{% trans "Enter" %}</button>
+            {% endblock button %}
+        </form>
+    </div>
+{% endblock %}

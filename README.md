@@ -4,5 +4,5 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/49443b45cf7b069affba/test_coverage)](https://codeclimate.com/github/Maksim75ru/python-project-52/test_coverage)
 
 
-[Ссылка на проект](https://python-project-52-production-667f.up.railway.app)
+[Ссылка на проект](https://python-project-52-production-78e0.up.railway.app)
 

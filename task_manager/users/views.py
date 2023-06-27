@@ -41,3 +41,18 @@ class UserUpdateView(TemplateView):
             return redirect("/users")
 
         return render(request, "users/update.html", {"form": form, "user_id": user_id})
+
+
+class UserDeleteView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get("pk")
+        user = UsersModel.objects.get(id=user_id)
+        form = UserForm(instance=user)
+        return render(request, "users/delete.html", {"form": form, "user": user})
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get("pk")
+        user = UsersModel.objects.get(id=user_id)
+        if user:
+            user.delete()
+            return redirect("/users")

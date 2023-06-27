@@ -20,7 +20,7 @@ class UserCreateView(TemplateView):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/users")
+            return redirect("/login")
 
         return render(request, "users/create.html", {"form": form})
 

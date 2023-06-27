@@ -3,26 +3,34 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib import messages
+from django.urls import reverse_lazy
 
 
 class HomePageView(TemplateView):
     template_name = "base.html"
 
 
-class UserLoginView(SuccessMessageMixin, TemplateView):
-    def get(self, request, *args, **kwargs):
-        form = AuthenticationForm()
-        success_message = _('You logged in')
-        return render(request, "login.html", {"form": form})
+class UserLoginView(SuccessMessageMixin, LoginView):
+    template_name = "login.html"
+    form_class = AuthenticationForm
+    next_page = reverse_lazy('home')
 
-    def post(self, request, *args, **kwargs):
-        form = AuthenticationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("/")
+    def form_valid(self, form):
+        messages.success(self.request, "You are logged in")
+        return super().form_valid(form)
 
-        return render(request, "login.html", {"form": form})
+    def form_invalid(self, form):
+        error_login_message = "Please enter correct username and password."
+        messages.error(self.request, error_login_message)
+        return super().form_invalid(form)
 
 
-# class UserLogoutView(TemplateView):
-#     pass
+class UserLogoutView(SuccessMessageMixin, LogoutView):
+    next_page = reverse_lazy('home')
+    success_message = "You are logged out"
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, self.success_message)
+        return super().dispatch(request, *args, **kwargs)

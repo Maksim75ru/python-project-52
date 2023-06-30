@@ -8,6 +8,9 @@ install:
 build:
 	poetry build
 
+package-install:
+	python3 -m pip install --user --force-reinstall dist/*.whl
+
 dev:
 	poetry run python3 manage.py runserver
 
@@ -22,4 +25,4 @@ lint:
 	poetry run flake8 task_manager
 
 test:
-	poetry run python3 manage.py test
+	poetry run python3 manage.py test -v 3

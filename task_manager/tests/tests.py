@@ -6,12 +6,11 @@ from task_manager.users.models import UsersModel
 from task_manager.views import HomePageView
 
 
-import pytest
-
 c = Client()
 
 
 class SimpleTest(TestCase):
+    databases = 'postgresql'
 
     def setUp(self):
         # Every test needs access to the request factory.

@@ -22,6 +22,6 @@ urlpatterns = [
     path("", views.HomePageView.as_view(), name="home"),
     path("login/", views.UserLoginView.as_view(), name="login"),
     path("logout/", views.UserLogoutView.as_view(), name="logout"),
-    path("users/", include("task_manager.users.urls")),
+    path("users/", include("task_manager.users.urls"), name="users"),
     path("admin/", admin.site.urls),
 ]

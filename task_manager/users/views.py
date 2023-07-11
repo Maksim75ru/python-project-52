@@ -1,58 +1,57 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic.base import TemplateView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.contrib import messages
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from task_manager.users.models import UsersModel
 from task_manager.users.forms import UserForm
+from django.contrib.messages.views import SuccessMessageMixin
 
 
-class ListUsersView(TemplateView):
+class ListUsersView(ListView):
+    model = UsersModel
+    template_name = "users/list_users.html"
+    context_object_name = "users_list"
 
-    def get(self, request, *args, **kwargs):
-        users_list = UsersModel.objects.all()
-        return render(request, "users/list_users.html", {"users_list": users_list})
 
+class UserCreateView(SuccessMessageMixin, CreateView):
 
-class UserCreateView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        form = UserForm()
-        return render(request, "users/create.html", {"form": form})
+    model = UsersModel
+    form_class = UserForm
+    template_name = "users/create.html"
+    success_url = reverse_lazy('login')
 
     def post(self, request, *args, **kwargs):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "User created")
             return redirect("login")
 
+        messages.warning(request, "Can't create user")
         return render(request, "users/create.html", {"form": form})
 
 
-class UserUpdateView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get("pk")
-        user = UsersModel.objects.get(id=user_id)
-        form = UserForm(instance=user)
-        return render(request, "users/update.html", {"form": form, "user_id": user_id})
+class UserUpdateView(SuccessMessageMixin, UpdateView):
+    model = UsersModel
+    form_class = UserForm
+    template_name = "users/update.html"
+    success_url = reverse_lazy('users_list')
+    success_message = "User changed"
+    permission_denied_message = "Can't edit user"
+
+
+class UserDeleteView(DeleteView):
+
+    model = UsersModel
+    template_name = "users/delete.html"
+    success_url = reverse_lazy("users_list")
 
     def post(self, request, *args, **kwargs):
-        user_id = kwargs.get("pk")
-        user = UsersModel.objects.get(id=user_id)
-        form = UserForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect("users")
-
-        return render(request, "users/update.html", {"form": form, "user_id": user_id})
-
-
-class UserDeleteView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        user_id = kwargs.get("pk")
-        user = UsersModel.objects.get(id=user_id)
-        form = UserForm(instance=user)
-        return render(request, "users/delete.html", {"form": form, "user": user})
-
-    def post(self, request, *args, **kwargs):
-        user_id = kwargs.get("pk")
-        user = UsersModel.objects.get(id=user_id)
-        if user:
-            user.delete()
-            return redirect("/users")
+        self.object = self.get_object()
+        user_id = self.object.pk
+        if UsersModel.objects.filter(pk=user_id).exists():
+            messages.success(request, "User deleted")
+            return super().post(request, *args, **kwargs)
+        messages.warning(request, "Can't delete used user")
+        return redirect(self.get_success_url)

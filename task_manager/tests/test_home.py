@@ -62,6 +62,6 @@ class UserTestUpdate(TransactionTestCase):
             ),
             **TEST_USER
         )
-
+        response = self.client.get('/users/')
         self.assertRedirects(response, reverse_lazy("users_list"))
         self.assertEqual(user.last_name, TEST_USER.get('last_name'))

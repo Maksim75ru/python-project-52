@@ -28,6 +28,3 @@ jobs:
 
       - name: Django test
         run: make test
-        with:
-          SECRET_KEY: ${{ env.SECRET_KEY }}
-

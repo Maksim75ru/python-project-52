@@ -6,7 +6,6 @@ on:
 
 env:
   env_var: ${{ vars.PORT }}
-  SECRET_KEY: ${{ vars.SECRET_KEY }}
 
 jobs:
   build:
@@ -28,4 +27,6 @@ jobs:
 
       - name: Django test
         run: make test
+        with:
+          SECRET_KEY: ${{ env.SECRET_KEY }}
 

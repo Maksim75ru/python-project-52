@@ -6,7 +6,7 @@ on:
 
 env:
   env_var: ${{ vars.PORT }}
-  SECRET_KEY: ${{ vars.SECRET_KEY }}
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
 jobs:
   build:

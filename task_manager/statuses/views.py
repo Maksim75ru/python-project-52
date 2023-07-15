@@ -31,18 +31,12 @@ class CreateStatus(SuccessMessageMixin, CreateView):
         return response
 
 
-class UpdateStatus(
-    SuccessMessageMixin,
-    LoginRequiredMixin,
-    UpdateView,
-):
+class UpdateStatus(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Status
     fields = ['name']
     template_name = "statuses/update_status.html"
     success_url = reverse_lazy("statuses_list")
     success_message = _("Status changed")
-
-
 
 
 class DeleteStatus(LoginRequiredMixin, DeleteView):

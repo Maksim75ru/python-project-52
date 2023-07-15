@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+{% if form.subject.errors %}
+<div>
+    <ul>
+    {% for error in form.subject.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<h1>{% translate "Delete task" %}</h1>
+<div>{% translate "Are you sure that you want to delete" %} {{ task.name }}?</div>
+<form action="{% url 'task_delete' pk=task.id %}" method="post">
+    {% csrf_token %}
+    <input class="btn btn-danger"  type="submit" value='{% translate "Yes, delete it" %}'>
+</form>
+{% endblock %}

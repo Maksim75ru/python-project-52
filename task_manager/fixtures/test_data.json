@@ -45,6 +45,7 @@
   "create_status_data": {
     "name": "status1"
   },
+
   "create_status_result": "status1",
   "update_status": "test_status",
   "update_status_data": {
@@ -65,5 +66,36 @@
   },
   "delete_status_result": "test_status",
   "delete_status_message": "Статус успешно удален",
-    "delete_used_status_message": "Невозможно удалить статус, потому что он используется"
+    "delete_used_status_message": "Невозможно удалить статус, потому что он используется",
+
+"create_task_data": {
+    "name": "task4task",
+    "description": "john3 khkjhkjhkj kjhhh",
+    "executor": 2,
+    "status": 2
+  },
+  "existed_task_data": {
+    "name": "used_task",
+    "description": "john3 khkjhkjhkj kjhhh",
+    "executor": 2,
+    "status": 2
+  },
+  "create_task_result": "task4task",
+  "create_task_message": "Задача успешно создана",
+  "update_task": "test_task",
+  "update_task_data": {
+    "name": "task4task1",
+    "description": "john3 khkjhkjhkj kjhhh",
+    "executor": 2,
+    "status": 2
+  },
+  "update_task_result": "task4task1",
+  "update_task_message": "Задача успешно изменена",
+  "delete_task": "test_task",
+  "delete_task_data": {
+    "name": "test_task"
+  },
+  "delete_task_result": "test_task",
+  "delete_task_message": "Задача успешно удалена"
+
 }

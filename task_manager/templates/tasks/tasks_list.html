@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<h1>{% translate "Tasks" %}</h1>
+<p><a href="{% url 'task_create' %}">{% translate "Create tasks" %}</a></p>
+<div class="table-responsive">
+    <form method="get">
+      {{ filter.form.as_p }}
+      <input type="submit" value='{% translate "Show" %}'/>
+    </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>{% translate "ID" %}</th>
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Status" %}</th>
+        <th>{% translate "Author" %}</th>
+        <th>{% translate "Assigned to" %}</th>
+        <th>{% translate "Created at" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+      <tr>
+        <td>{{ task.id }}</td>
+        <td><a href="{% url 'task_details' pk=task.id %}">{{ task.name }}</a></td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.author.first_name }} {{ task.author.last_name }}</td>
+        <td>{{ task.executor.first_name }} {{ task.executor.last_name }}</td>
+        <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+        <td>
+          <form action="{% url 'task_update' pk=task.id %}" method="get">
+          {% csrf_token %}
+          <input type="submit" value='{% translate "Change data" %}'>
+          </form>
+          <form action="{% url 'task_delete' pk=task.id %}" method="get">
+          {% csrf_token %}
+          <input type="submit" value='{% translate "Delete data" %}'>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+</table>
+  </div>
+{% endblock %}

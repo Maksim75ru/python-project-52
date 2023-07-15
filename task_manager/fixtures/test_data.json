@@ -96,6 +96,30 @@
     "name": "test_task"
   },
   "delete_task_result": "test_task",
-  "delete_task_message": "Задача успешно удалена"
+  "delete_task_message": "Задача успешно удалена",
 
+ "create_label_data": {
+    "name": "label1"
+  },
+  "create_label_result": "label1",
+  "create_label_message": "Метка успешно создана",
+  "update_label": "test_label",
+  "update_label_data": {
+    "name": "label2"
+  },
+  "update_label_result": "label2",
+  "update_label_message": "Метка успешно изменена",
+  "delete_used_label_data": {
+    "name": "used_label"
+  },
+  "existed_label_data": {
+  "name": "used_label"
+  },
+  "delete_label": "test_label",
+  "used_label": "used_label",
+  "delete_label_data": {
+    "name": "test_label"
+  },
+  "delete_label_result": "test_label",
+  "delete_label_message": "Метка успешно удалена"
 }

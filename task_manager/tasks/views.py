@@ -16,6 +16,15 @@ class TasksListView(ListView):
     template_name = "tasks/tasks_list.html"
     context_object_name = "tasks"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = forms.TaskFilter(
+            self.request.GET,
+            queryset=self.get_queryset(),
+            request=self.request,
+        )
+        return context
+
 
 class TaskDetailsView(View):
     model = Task
@@ -25,13 +34,15 @@ class TaskDetailsView(View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get("pk")
         task = Task.objects.get(id=task_id)
+        task_labels = task.labels.values_list("name", flat=True)
         return render(
             request,
-            "tasks/task_details.html",
+            "task/task_details.html",
             context={
-                "task": task
+                "task": task, "task_labels": task_labels
             },
         )
+
 
 class CreateTask(SuccessMessageMixin, CreateView):
     form_class = forms.TaskCreateForm

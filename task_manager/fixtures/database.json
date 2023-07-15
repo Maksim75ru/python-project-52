@@ -34,5 +34,29 @@
         "groups": [],
         "user_permissions": []
     }
+},
+    {
+    "model": "statuses.status",
+    "pk": 1,
+    "fields": {
+        "name": "dfdafads",
+        "created_at": "2023-05-24T06:15:47.506Z"
+    }
+},
+{
+    "model": "statuses.status",
+    "pk": 2,
+    "fields": {
+        "name": "used_status",
+        "created_at": "2023-05-24T07:29:58.186Z"
+    }
+},
+{
+    "model": "statuses.status",
+    "pk": 3,
+    "fields": {
+        "name": "test_status",
+        "created_at": "2023-05-24T07:32:49.805Z"
+    }
 }
 ]

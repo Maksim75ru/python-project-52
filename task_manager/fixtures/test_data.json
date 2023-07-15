@@ -41,5 +41,29 @@
   },
   "delete_user_result": "john2222",
   "delete_user_message": "Пользователь успешно удален",
-  "delete_used_user_message": "Невозможно удалить пользователя, потому что он используется"
+  "delete_used_user_message": "Невозможно удалить пользователя, потому что он используется",
+  "create_status_data": {
+    "name": "status1"
+  },
+  "create_status_result": "status1",
+  "update_status": "test_status",
+  "update_status_data": {
+    "name": "status2"
+  },
+  "update_status_result": "status2",
+  "update_status_message": "Статус успешно изменен",
+    "delete_status": "test_status",
+  "used_status": "used_status",
+  "existed_status_data": {
+    "name": "used_status"
+  },
+  "delete_used_status_data": {
+    "name": "used_status"
+  },
+  "delete_status_data": {
+    "name": "test_status"
+  },
+  "delete_status_result": "test_status",
+  "delete_status_message": "Статус успешно удален",
+    "delete_used_status_message": "Невозможно удалить статус, потому что он используется"
 }

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<h1>{% translate "Statuses" %}</h1>
+<p><a href="{% url 'status_create' %}">{% translate "Create status" %}</a></p>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Creation date" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for status in statuses %}
+      <tr>
+        <td>{{ status.id }}</td>
+        <td>{{ status.name }}</td>
+        <td>{{ status.created_at|date:"d.m.Y H:i" }}</td>
+        <td>
+          <form action="{% url 'status_update' pk=status.id %}" method="get">
+          {% csrf_token %}
+          <input type="submit" value='{% translate "Change data" %}'>
+          </form>
+          <form action="{% url 'status_delete' pk=status.id %}" method="get">
+          {% csrf_token %}
+          <input type="submit" value='{% translate "Delete data" %}'>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+</table>
+  </div>
+{% endblock %}

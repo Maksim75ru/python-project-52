@@ -1,20 +1,17 @@
-from django import forms
+from task_manager.users.models import UsersModel
 from django.contrib.auth.forms import UserCreationForm
-from django.utils.translation import gettext as _
-from .models import UsersModel
 
 
-class UserForm(UserCreationForm):
+class UserCreateForm(UserCreationForm):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.fields['last_name'].required = True
+        self.fields['first_name'].required = True
 
-    first_name = forms.CharField(
-        max_length=150, required=True, label=_("First name")
-    )
-    last_name = forms.CharField(
-        max_length=150, required=True, label=_("Last name")
-    )
-
-    class Meta(UserCreationForm.Meta):
+    class Meta:
         model = UsersModel
-        fields = (
-            "first_name", "last_name", "username", "password1", "password2"
-        )
+        fields = ("username", "first_name", "last_name")
+
+
+class UserUpdateForm(UserCreateForm):
+    pass

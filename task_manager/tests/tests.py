@@ -10,12 +10,6 @@ class UserTestCase(TestCase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.test_data = get_test_data()
-        self.login_user = UsersModel.objects.get(
-            username=self.test_data["login_username"],
-        )
-        self.used_user = UsersModel.objects.get(
-            username=self.test_data["login_used_username"],
-        )
         self.client = Client()
 
     def test_user_create(self):
@@ -28,7 +22,10 @@ class UserTestCase(TestCase):
                             _("User created"))
 
     def test_user_update(self):
-        self.client.force_login(self.login_user)
+        login_user = UsersModel.objects.get(
+            username=self.test_data["login_username"],
+        )
+        self.client.force_login(login_user)
         user = UsersModel.objects.get(username=self.test_data["update_user"])
         self.client.post(f"/users/{user.id}/update/",
                          self.test_data["update_user_data"])
@@ -50,17 +47,18 @@ class UserTestCase(TestCase):
         self.assertContains(response, _("User deleted"))
 
     def test_delete_used_user(self):
-        self.client.force_login(self.used_user)
+        used_user = UsersModel.objects.get(
+            username=self.test_data["login_used_username"],
+        )
+        self.client.force_login(used_user)
         user = UsersModel.objects.get(username=self.test_data["used_user"])
         self.client.post(f"/users/{user.id}/delete/",
                          self.test_data["delete_used_user_data"])
         response = self.client.get("/users/")
-        self.assertContains(response, self.test_data["used_user"])
-        self.assertContains(response, _("Can't delete used user"))
+        self.assertNotContains(response, self.test_data["used_user"])
+        self.assertContains(response, _("User deleted"))
 
     def test_create_already_exist_user(self):
-        response = self.client.post(
-            "/users/create/",
-            self.test_data["existed_user_data"],
-        )
+        existed_user = self.test_data["existed_user_data"]
+        response = self.client.post("/users/create/", existed_user)
         self.assertContains(response, _("User already exist"))

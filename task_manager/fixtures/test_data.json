@@ -1,0 +1,45 @@
+{
+  "login_username": "steven777",
+  "create_user_data": {
+    "first_name": "john2",
+    "last_name": "john2",
+    "username": "john2222",
+    "password1": "wsd2349t",
+    "password2": "wsd2349t"
+  },
+  "existed_user_data": {
+    "first_name": "john2",
+    "last_name": "john2",
+    "username": "used_user",
+    "password1": "wsd2349t",
+    "password2": "wsd2349t"
+  },
+  "create_user_result": "john2222",
+  "create_user_message": "Пользователь успешно зарегистрирован",
+  "update_user": "steven777",
+  "update_user_data": {
+    "first_name": "john2",
+    "last_name": "john2",
+    "username": "john22223",
+    "password1": "wsd2349t",
+    "password2": "wsd2349t"
+  },
+  "update_user_result": "john22223",
+  "update_user_message": "Пользователь успешно изменен",
+  "login_deleted_user_data": {
+    "username": "john2222",
+    "password": "wsd2349t"
+  },
+  "login_used_username": "used_user",
+  "delete_user": "john2222",
+  "used_user": "used_user",
+  "delete_user_data": {
+    "username": "john2222"
+  },
+  "delete_used_user_data": {
+    "username": "used_user"
+  },
+  "delete_user_result": "john2222",
+  "delete_user_message": "Пользователь успешно удален",
+  "delete_used_user_message": "Невозможно удалить пользователя, потому что он используется"
+}

@@ -15,7 +15,7 @@ dev:
 	poetry run python3 manage.py runserver
 
 shell:
-	poetry run python manage.py shell
+	poetry run python3 manage.py shell
 
 migrate:
 	poetry run python manage.py makemigrations

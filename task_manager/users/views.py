@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.contrib import messages
-from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from task_manager.users.models import UsersModel
-from task_manager.users.forms import UserForm
+from task_manager.users import forms
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from task_manager.mixins import LoginRequiredMixin, UserRequiredMixin
+from django.utils.translation import gettext as _
 from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic.list import ListView
 
 
 class ListUsersView(ListView):
@@ -15,43 +17,44 @@ class ListUsersView(ListView):
 
 
 class UserCreateView(SuccessMessageMixin, CreateView):
-
-    model = UsersModel
-    form_class = UserForm
+    form_class = forms.UserCreateForm
     template_name = "users/create.html"
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy("login")
+    success_message = _("User created")
 
     def post(self, request, *args, **kwargs):
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "User created")
-            return redirect("login")
-
-        messages.warning(request, "Can't create user")
-        return render(request, "users/create.html", {"form": form})
+    # super().post() maybe raise a ValidationError if it is failure to save
+        response = super().post(request, *args, **kwargs)
+    # the below code is optional. django has responsed another erorr message
+        if not self.object:
+            messages.info(request, "User already exist")
+        return response
 
 
-class UserUpdateView(SuccessMessageMixin, UpdateView):
+class UserUpdateView(
+    SuccessMessageMixin,
+    LoginRequiredMixin,
+    UserRequiredMixin,
+    UpdateView,
+):
     model = UsersModel
-    form_class = UserForm
+    form_class = forms.UserUpdateForm
     template_name = "users/update.html"
-    success_url = reverse_lazy('users_list')
-    success_message = "User changed"
-    permission_denied_message = "Can't edit user"
+    success_url = reverse_lazy("users_list")
+    success_message = _("User changed")
+    permission_denied_message = _("Can't edit user")
 
 
-class UserDeleteView(DeleteView):
-
+class UserDeleteView(LoginRequiredMixin, UserRequiredMixin, DeleteView):
     model = UsersModel
     template_name = "users/delete.html"
     success_url = reverse_lazy("users_list")
+    permission_denied_message = _("Can't delete user")
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        user_id = self.object.pk
-        if UsersModel.objects.filter(pk=user_id).exists():
-            messages.success(request, "User deleted")
-            return super().post(request, *args, **kwargs)
-        messages.warning(request, "Can't delete used user")
-        return redirect(self.get_success_url)
+        if not self.object:
+            messages.warning(request, _("Can't delete used user"))
+            return redirect(self.get_success_url())
+        messages.success(request, _("User deleted"))
+        return super().post(request, *args, **kwargs)

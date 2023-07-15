@@ -13,7 +13,7 @@ Task Manager is a web application built on the Django framework with basic funct
 ### System requirements
 - Python (3.8 or later)
 - Poetry
-- Django
+- Django (4.2.2 or later)
 
 ### Installation and run
 ```

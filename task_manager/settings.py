@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 POST_SERVER_ITEM_ACCESS_TOKEN = os.getenv("ROLLBAR_ACCESS_TOKEN")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["webserver", "*"]
 

@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 POST_SERVER_ITEM_ACCESS_TOKEN = os.getenv("ROLLBAR_ACCESS_TOKEN")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["webserver", "*"]
 
@@ -142,4 +142,8 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
+    'server': {
+        'branch': 'main',
+        'root': BASE_DIR,
+    },
 }

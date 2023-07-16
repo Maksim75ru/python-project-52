@@ -4,6 +4,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, "index.html")
 
 
 class HomePageView(TemplateView):

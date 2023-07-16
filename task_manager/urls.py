@@ -27,4 +27,5 @@ urlpatterns = [
     path("tasks/", include("task_manager.tasks.urls"), name="tasks"),
     path("labels/", include("task_manager.labels.urls"), name="labels"),
     path("admin/", admin.site.urls),
+    path("", views.index, name="index"),
 ]

@@ -10,7 +10,7 @@ Task Manager is a web application built on the Django framework with basic funct
 - registering a user and creating tasks
 - attaching additional properties to tasks, such as statuses and labels
 
-#### [Link on project](https://python-project-52-production-78e0.up.railway.app)
+#### [Link on project](https://task-manager-hq0h.onrender.com)
 
 ___
 ### System requirements

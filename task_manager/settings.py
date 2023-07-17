@@ -112,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
+LANGUAGES = [('en', 'English'), ('ru', 'Russian')]
 
 LANGUAGE_CODE = "en-us"
 
@@ -142,8 +143,4 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
-    'server': {
-        'branch': 'main',
-        'root': BASE_DIR,
-    },
 }

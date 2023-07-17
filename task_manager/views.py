@@ -4,6 +4,12 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.http import HttpResponse
+
+
+def error(request):
+    foo()
+    return HttpResponse('You shouldn\'t be seeing this')
 
 
 class HomePageView(TemplateView):

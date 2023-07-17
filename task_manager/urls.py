@@ -19,7 +19,7 @@ from task_manager import views
 
 
 urlpatterns = [
-    path("rollbar_check/", views.error),
+    path("rollbar_check/", views.index),
     path("", views.HomePageView.as_view(), name="home"),
     path("login/", views.UserLoginView.as_view(), name="login"),
     path("logout/", views.UserLogoutView.as_view(), name="logout"),

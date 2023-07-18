@@ -25,6 +25,7 @@ loguru = "^0.7.0"
 django-filter = "^23.2"
 rollbar = "^0.16.3"
 urllib3 = "1.26.16"
+coverage = "^7.2.7"
 
 
 [build-system]

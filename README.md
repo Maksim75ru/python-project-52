@@ -4,6 +4,7 @@ ___
 [![Actions Status](https://github.com/Maksim75ru/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/Maksim75ru/python-project-52/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/49443b45cf7b069affba/maintainability)](https://codeclimate.com/github/Maksim75ru/python-project-52/maintainability)
 [![Django test](https://github.com/Maksim75ru/python-project-52/actions/workflows/tests-check.yml/badge.svg)](https://github.com/Maksim75ru/python-project-52/actions/workflows/tests-check.yml)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/49443b45cf7b069affba/test_coverage)](https://codeclimate.com/github/Maksim75ru/python-project-52/test_coverage)
 
 ### Project description
 Task Manager is a web application built on the Django framework with basic functionality, including all CRUD operations and task management features:

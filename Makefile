@@ -14,7 +14,6 @@ package-install:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
 dev:
-	@$(MANAGE) migrate
 	@$(MANAGE) runserver
 
 shell:

@@ -36,7 +36,7 @@ test:
 	poetry run python3 manage.py test
 
 test-coverage:
-	coverage run --source='.'  manage.py test task_manager
+	coverage run manage.py test task_manager
 	coverage json
 
 build: install migrate

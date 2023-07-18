@@ -5,7 +5,7 @@ start:
 	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi:application
 
 install:
-	@poetry install
+	poetry install
 
 build:
 	poetry build
@@ -14,10 +14,10 @@ package-install:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
 dev:
-	@$(MANAGE) runserver
+	poetry run python manage.py runserver
 
 shell:
-	@$(MANAGE) shell
+	poetry run python manage.py shell
 
 
 make-migration:
@@ -30,10 +30,10 @@ lint:
 	poetry run flake8 task_manager
 
 test:
-	@$(MANAGE) test
+	poetry run python3 manage.py test
 
-test-coverage:
-	coverage run --source='.'  manage.py test task_manager
-	coverage html
+#test-coverage:
+#	coverage run --source='.'  manage.py test task_manager
+#	coverage html
 
 build: install migrate

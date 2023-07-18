@@ -18,10 +18,8 @@ dev:
 	@$(MANAGE) migrate
 	@$(MANAGE) runserver
 
-
 shell:
 	@$(MANAGE) shell
-
 
 make-migration:
 	@$(MANAGE) makemigrations
@@ -36,7 +34,7 @@ test:
 	poetry run python3 manage.py test
 
 test-coverage:
-	coverage run manage.py test task_manager
-	coverage json
+	poetry run coverage run --source="task_manager" manage.py test task_manager
+	poetry run coverage xml
 
 build: install migrate

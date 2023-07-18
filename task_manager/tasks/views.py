@@ -3,27 +3,18 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.list import ListView
 from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
+
 from task_manager.tasks.models import Task
+from task_manager.tasks import filters
 from task_manager.tasks import forms
 from task_manager.mixins import LoginRequiredMixin
 
 
-class TasksListView(ListView):
-    model = Task
-    template_name = "tasks/tasks_list.html"
-    context_object_name = "tasks"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = forms.TaskFilter(
-            self.request.GET,
-            queryset=self.get_queryset(),
-            request=self.request,
-        )
-        return context
+def get_tasks_list(request):
+    f = filters.TaskFilter(request.GET, queryset=Task.objects.all())
+    return render(request, 'tasks/tasks_list.html', {'filter': f})
 
 
 class TaskDetailsView(View):
@@ -55,15 +46,13 @@ class CreateTask(SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
     def post(self, request, *args, **kwargs):
-    # super().post() maybe raise a ValidationError if it is failure to save
         response = super().post(request, *args, **kwargs)
-    # the below code is optional. django has responsed another erorr message
         if not self.object:
             messages.info(request, "Task already exist")
         return response
 
 
-class UpdateTask(SuccessMessageMixin, LoginRequiredMixin,UpdateView):
+class UpdateTask(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Task
     form_class = forms.TaskUpdateForm
     template_name = "tasks/update_task.html"

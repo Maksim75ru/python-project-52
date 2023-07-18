@@ -22,9 +22,9 @@ class Task(models.Model):
     status = models.ForeignKey(Status, on_delete=models.PROTECT)
     executor = models.ForeignKey(UsersModel, on_delete=models.PROTECT,
                                  related_name="user_assignee")
+    created_at = models.DateTimeField(default=timezone.now)
     labels = models.ManyToManyField(Label, through=TaskLabel,
                                     related_name="tasks")
-    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name

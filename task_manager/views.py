@@ -4,6 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.utils.translation import gettext as _
 
 
 class HomePageView(TemplateView):
@@ -16,18 +17,18 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     next_page = reverse_lazy("home")
 
     def form_valid(self, form):
-        messages.success(self.request, "You are logged in")
+        messages.success(self.request, _("You are logged in"))
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        error_login_message = "Please enter correct username and password."
+        error_login_message = _("Please enter correct username and password.")
         messages.error(self.request, error_login_message)
         return super().form_invalid(form)
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):
     next_page = reverse_lazy("home")
-    success_message = "You are logged out"
+    success_message = _("You are logged out")
 
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, self.success_message)

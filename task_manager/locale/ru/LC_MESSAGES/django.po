@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-19 23:29+0700\n"
+"POT-Creation-Date: 2023-07-19 23:50+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -380,3 +380,19 @@ msgstr "У вас нет прав для изменения другого по�
 #: task_manager/users/views.py:54
 msgid "Can't delete user"
 msgstr "У вас нет прав для удаления другого пользователя."
+
+#: task_manager/views.py:20
+#, fuzzy
+#| msgid "You are not logged in"
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/views.py:24
+msgid "Please enter correct username and password."
+msgstr "Пожалуйста введите корректный логин и пароль"
+
+#: task_manager/views.py:31
+#, fuzzy
+#| msgid "You are not logged in"
+msgid "You are logged out"
+msgstr "Вы разлогинены"

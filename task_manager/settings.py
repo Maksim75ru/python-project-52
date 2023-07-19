@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+
+from django.utils.translation import gettext_lazy
 from dotenv import load_dotenv
 import dj_database_url
 
@@ -120,16 +122,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-LANGUAGES = [('en', 'English'), ('ru', 'Russian')]
 
-LANGUAGE_CODE = "en-us"
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+LANGUAGES = (
+    ('en',  gettext_lazy('English')),
+    ('ru',  gettext_lazy('Russian')),
+)
+LANGUAGE_CODE = "ru-ru"
 
 TIME_ZONE = "UTC"
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.template.context_processors.i18n',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

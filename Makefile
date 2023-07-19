@@ -37,4 +37,10 @@ test-coverage:
 	poetry run coverage run --source="task_manager" manage.py test task_manager
 	poetry run coverage xml
 
+makemessages:
+	django-admin makemessages --ignore="static" --ignore=".env" -l ru
+	django-admin compilemessages --ignore="static" --ignore=".env" -l ru
+	django-admin makemessages -a --ignore="static" --ignore=".env"
+
+
 build: install migrate

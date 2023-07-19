@@ -1,5 +1,5 @@
 from django.test import Client, TestCase
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from task_manager.statuses.models import Status
 from task_manager.users.models import UsersModel
 from task_manager.tests import get_test_data

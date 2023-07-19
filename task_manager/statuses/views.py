@@ -25,7 +25,7 @@ class CreateStatus(SuccessMessageMixin, CreateView):
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
         if not self.object:
-            messages.info(request, "Status already exist")
+            messages.info(request, _("Status already exist"))
         return response
 
 

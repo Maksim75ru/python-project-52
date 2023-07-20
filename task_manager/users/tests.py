@@ -19,7 +19,7 @@ class UserTestCase(TestCase):
         self.assertContains(response,
                             self.test_data["create_user_result"])
         self.assertContains(response,
-                            _("User created"))
+                            _("User is successfully registered"))
 
     def test_user_update(self):
         login_user = UsersModel.objects.get(
@@ -31,7 +31,7 @@ class UserTestCase(TestCase):
                          self.test_data["update_user_data"])
         response = self.client.get("/users/")
         self.assertContains(response, self.test_data["update_user_result"])
-        self.assertContains(response, _("User changed"))
+        self.assertContains(response, _("User is successfully updated"))
 
     def test_user_delete(self):
         self.client.post("/users/create/",
@@ -44,7 +44,7 @@ class UserTestCase(TestCase):
                          self.test_data["delete_user_data"])
         response = self.client.get("/users/")
         self.assertNotContains(response, self.test_data["delete_user"])
-        self.assertContains(response, _("User deleted"))
+        self.assertContains(response, _("User is successfully deleted"))
 
     def test_delete_used_user(self):
         used_user = UsersModel.objects.get(
@@ -56,7 +56,7 @@ class UserTestCase(TestCase):
                          self.test_data["delete_used_user_data"])
         response = self.client.get("/users/")
         self.assertNotContains(response, self.test_data["used_user"])
-        self.assertContains(response, _("User deleted"))
+        self.assertContains(response, _("User is successfully deleted"))
 
     def test_create_already_exist_user(self):
         existed_user = self.test_data["existed_user_data"]

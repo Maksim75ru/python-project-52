@@ -127,7 +127,10 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
-LANGUAGES = (('en',  gettext_lazy('English')), ('ru',  gettext_lazy('Russian')),)
+LANGUAGES = (
+    ('en', gettext_lazy('English')),
+    ('ru', gettext_lazy('Russian')),
+)
 LANGUAGE_CODE = "ru-ru"
 
 TIME_ZONE = "UTC"

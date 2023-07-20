@@ -39,7 +39,7 @@ class CreateTask(SuccessMessageMixin, CreateView):
     form_class = forms.TaskCreateForm
     template_name = "tasks/create_task.html"
     success_url = reverse_lazy("tasks_list")
-    success_message = _("Task created")
+    success_message = _("Task successfully created")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -57,7 +57,7 @@ class UpdateTask(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     form_class = forms.TaskUpdateForm
     template_name = "tasks/update_task.html"
     success_url = reverse_lazy("tasks_list")
-    success_message = _("Task changed")
+    success_message = _("Task successfully changed")
 
 
 class DeleteTask(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
@@ -70,5 +70,5 @@ class DeleteTask(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         if not self.object:
             messages.warning(request, _("Can't delete task"))
             return redirect(self.get_success_url())
-        messages.success(request, _("Task deleted"))
+        messages.success(request, _("Task successfully deleted"))
         return super().post(request, *args, **kwargs)

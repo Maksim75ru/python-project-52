@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-20 21:38+0700\n"
+"POT-Creation-Date: 2023-07-20 21:45+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,15 +115,15 @@ msgid "Description"
 msgstr "Описание"
 
 #: task_manager/tasks/tests.py:28 task_manager/tasks/views.py:42
-msgid "Task created"
+msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
 #: task_manager/tasks/tests.py:40 task_manager/tasks/views.py:60
-msgid "Task changed"
+msgid "Task successfully changed"
 msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/tests.py:52 task_manager/tasks/views.py:73
-msgid "Task deleted"
+msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
 #: task_manager/tasks/tests.py:61
@@ -392,6 +392,15 @@ msgstr "Пожалуйста введите корректный логин и �
 #: task_manager/views.py:34
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Task created"
+#~ msgstr "Задача успешно создана"
+
+#~ msgid "Task changed"
+#~ msgstr "Задача успешно изменена"
+
+#~ msgid "Task deleted"
+#~ msgstr "Задача успешно удалена"
 
 #~ msgid "User created"
 #~ msgstr "Пользователь успешно зарегестрирован"

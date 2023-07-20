@@ -25,7 +25,7 @@ class TaskTestCase(TestCase):
         self.assertContains(response,
                             self.test_data["create_task_result"])
         self.assertContains(response,
-                            _("Task created"))
+                            _("Task successfully created"))
 
     def test_task_update(self):
         login_user = UsersModel.objects.get(
@@ -37,7 +37,7 @@ class TaskTestCase(TestCase):
                          self.test_data["update_task_data"])
         response = self.client.get("/tasks/")
         self.assertContains(response, self.test_data["update_task_result"])
-        self.assertContains(response, _("Task changed"))
+        self.assertContains(response, _("Task successfully changed"))
 
     def test_task_delete(self):
         login_user = UsersModel.objects.get(
@@ -49,7 +49,7 @@ class TaskTestCase(TestCase):
                          self.test_data["delete_task_data"])
         response = self.client.get("/tasks/")
         self.assertNotContains(response, self.test_data["delete_task"])
-        self.assertContains(response, _("Task deleted"))
+        self.assertContains(response, _("Task successfully deleted"))
 
     def test_create_already_exist_task(self):
         login_user = UsersModel.objects.get(

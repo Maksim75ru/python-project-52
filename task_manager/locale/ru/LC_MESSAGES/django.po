@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-20 21:24+0700\n"
+"POT-Creation-Date: 2023-07-20 21:29+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,12 +360,11 @@ msgstr "Изменение пользователя"
 msgid "User created"
 msgstr "Пользователь успешно зарегестрирован"
 
-#: task_manager/users/tests.py:34 task_manager/users/views.py:42
+#: task_manager/users/tests.py:34
 msgid "User changed"
 msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/tests.py:47 task_manager/users/tests.py:59
-#: task_manager/users/views.py:56
 msgid "User deleted"
 msgstr "Пользователь удален"
 
@@ -375,15 +374,23 @@ msgstr "Пользователь с таким именем уже сущест�
 
 #: task_manager/users/views.py:23
 msgid "User is successfully registered"
-msgstr ""
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/users/views.py:42
+msgid "User is successfully updated"
+msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:43
-msgid "Can't edit user"
+msgid "You have no rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/users/views.py:54
 msgid "Can't delete user"
 msgstr "У вас нет прав для удаления другого пользователя."
+
+#: task_manager/users/views.py:56
+msgid "User is successfully deleted"
+msgstr "Пользователь успешно удален"
 
 #: task_manager/views.py:23
 msgid "You are logged in"

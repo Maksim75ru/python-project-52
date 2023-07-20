@@ -39,8 +39,8 @@ class UserUpdateView(
     form_class = forms.UserUpdateForm
     template_name = "users/update.html"
     success_url = reverse_lazy("users_list")
-    success_message = _("User changed")
-    permission_denied_message = _("Can't edit user")
+    success_message = _("User is successfully updated")
+    permission_denied_message = _("You have no rights to change another user.")
 
 
 class UserDeleteView(LoginRequiredMixin, UserRequiredMixin, DeleteView):
@@ -53,5 +53,5 @@ class UserDeleteView(LoginRequiredMixin, UserRequiredMixin, DeleteView):
         if not self.object:
             messages.warning(request, _("Can't delete user"))
             return redirect(self.get_success_url())
-        messages.success(request, _("User deleted"))
+        messages.success(request, _("User is successfully deleted"))
         return super().post(request, *args, **kwargs)

@@ -42,5 +42,4 @@ makemessages:
 	django-admin compilemessages --ignore="static" --ignore=".env" -l ru
 	django-admin makemessages -a --ignore="static" --ignore=".env"
 
-
 build: install migrate

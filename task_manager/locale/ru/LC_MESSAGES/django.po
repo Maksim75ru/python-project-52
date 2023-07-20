@@ -382,8 +382,6 @@ msgid "Can't delete user"
 msgstr "У вас нет прав для удаления другого пользователя."
 
 #: task_manager/views.py:20
-#, fuzzy
-#| msgid "You are not logged in"
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
@@ -392,7 +390,5 @@ msgid "Please enter correct username and password."
 msgstr "Пожалуйста введите корректный логин и пароль"
 
 #: task_manager/views.py:31
-#, fuzzy
-#| msgid "You are not logged in"
 msgid "You are logged out"
 msgstr "Вы разлогинены"

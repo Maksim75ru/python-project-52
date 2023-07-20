@@ -10,11 +10,21 @@ from task_manager.tasks.models import Task
 from task_manager.tasks import filters
 from task_manager.tasks import forms
 from task_manager.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
 
 
-def get_tasks_list(request):
-    f = filters.TaskFilter(request.GET, queryset=Task.objects.all())
-    return render(request, 'tasks/tasks_list.html', {'filter': f})
+class TasksListView(ListView):
+    model = Task
+    template_name = "tasks/tasks_list.html"
+    context_object_name = "tasks"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["filter"] = filters.TaskFilter(
+            self.request.GET, queryset=self.get_queryset(),
+            request=self.request,
+        )
+        return context
 
 
 class TaskDetailsView(View):

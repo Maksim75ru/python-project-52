@@ -28,7 +28,7 @@ class TaskDetailsView(View):
         task_labels = task.labels.values_list("name", flat=True)
         return render(
             request,
-            "task/task_details.html",
+            "tasks/task_details.html",
             context={
                 "task": task, "task_labels": task_labels
             },

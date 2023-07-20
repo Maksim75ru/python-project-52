@@ -20,7 +20,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     form_class = forms.UserCreateForm
     template_name = "users/create.html"
     success_url = reverse_lazy("login")
-    success_message = _("User created")
+    success_message = _("User is successfully registered")
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)

@@ -5,6 +5,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.cache import never_cache
 
 
 class HomePageView(TemplateView):
@@ -30,6 +33,8 @@ class UserLogoutView(SuccessMessageMixin, LogoutView):
     next_page = reverse_lazy("home")
     success_message = _("You are logged out")
 
+    @method_decorator(csrf_protect)
+    @method_decorator(never_cache)
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, self.success_message)
         return super().dispatch(request, *args, **kwargs)

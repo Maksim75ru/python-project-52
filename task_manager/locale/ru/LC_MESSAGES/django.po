@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-19 23:50+0700\n"
+"POT-Creation-Date: 2023-07-20 21:24+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,7 +356,7 @@ msgstr "Удалить"
 msgid "Update user"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/tests.py:22 task_manager/users/views.py:23
+#: task_manager/users/tests.py:22
 msgid "User created"
 msgstr "Пользователь успешно зарегестрирован"
 
@@ -373,6 +373,10 @@ msgstr "Пользователь удален"
 msgid "User already exist"
 msgstr "Пользователь с таким именем уже существует."
 
+#: task_manager/users/views.py:23
+msgid "User is successfully registered"
+msgstr ""
+
 #: task_manager/users/views.py:43
 msgid "Can't edit user"
 msgstr "У вас нет прав для изменения другого пользователя."
@@ -381,14 +385,14 @@ msgstr "У вас нет прав для изменения другого по�
 msgid "Can't delete user"
 msgstr "У вас нет прав для удаления другого пользователя."
 
-#: task_manager/views.py:20
+#: task_manager/views.py:23
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:24
+#: task_manager/views.py:27
 msgid "Please enter correct username and password."
 msgstr "Пожалуйста введите корректный логин и пароль"
 
-#: task_manager/views.py:31
+#: task_manager/views.py:34
 msgid "You are logged out"
 msgstr "Вы разлогинены"

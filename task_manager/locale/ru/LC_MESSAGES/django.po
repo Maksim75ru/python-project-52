@@ -297,7 +297,7 @@ msgstr "Метки"
 
 #: task_manager/templates/tasks/tasks_list.html:5
 msgid "Create tasks"
-msgstr "Создать задачи"
+msgstr "Создать задачу"
 
 #: task_manager/templates/tasks/tasks_list.html:9
 msgid "Show"

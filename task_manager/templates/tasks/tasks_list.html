@@ -29,14 +29,14 @@
         <td>{{ task.executor.first_name }} {{ task.executor.last_name }}</td>
         <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
         <td>
-          <form action="{% url 'task_update' pk=task.id %}" method="get">
           {% csrf_token %}
-          <input type="submit" value='{% translate "Change data" %}'>
-          </form>
-          <form action="{% url 'task_delete' pk=task.id %}" method="get">
+          <a href="{% url 'task_update' pk=task.id %}" style="margin: 1%;" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true">
+            {% translate 'Change data' %}
+          </a>
           {% csrf_token %}
-          <input type="submit" value='{% translate "Delete data" %}'>
-          </form>
+          <a href="{% url 'task_delete' pk=task.id %}" style="margin: 1%;" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true">
+            {% translate "Delete data" %}
+          </a>
         </td>
       </tr>
       {% endfor %}

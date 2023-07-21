@@ -25,9 +25,12 @@
                     <td>{{ user.first_name }} {{ user.last_name }}</td>
                     <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
                     <td>
-                      <a href="{% url 'users_update' user.id %}">{% translate 'Update' %}</a>
-                      <br>
-                      <a href="{% url 'users_delete' user.id %}">{% translate 'Delete' %}</a>
+                        <a href="{% url 'users_update' user.id %}" style="margin: 1%;" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true">
+                          {% translate 'Update' %}
+                        </a>
+                        <a href="{% url 'users_delete' user.id %}" style="margin: 1%;" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true">
+                          {% translate 'Delete' %}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

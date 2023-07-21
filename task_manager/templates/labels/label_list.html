@@ -19,14 +19,14 @@
         <td>{{ label.name }}</td>
         <td>{{ label.created_at|date:"d.m.Y H:i" }}</td>
         <td>
-          <form action="{% url 'label_update' pk=label.id %}" method="get">
           {% csrf_token %}
-          <input type="submit" value='{% translate "Change data" %}'>
-          </form>
-          <form action="{% url 'label_delete' pk=label.id %}" method="get">
+          <a href="{% url 'label_update' pk=label.id %}" style="margin: 1%;" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true">
+            {% translate 'Change data' %}
+          </a>
           {% csrf_token %}
-          <input type="submit" value='{% translate "Delete data" %}'>
-          </form>
+          <a href="{% url 'label_delete' pk=label.id %}" style="margin: 1%;" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true">
+            {% translate "Delete data" %}
+          </a>
         </td>
       </tr>
       {% endfor %}
